@@ -1,0 +1,15 @@
+LICENSE
+README.md
+setup.py
+src/VGGClassifier/__init__.py
+src/VGGClassifier.egg-info/PKG-INFO
+src/VGGClassifier.egg-info/SOURCES.txt
+src/VGGClassifier.egg-info/dependency_links.txt
+src/VGGClassifier.egg-info/top_level.txt
+src/VGGClassifier/components/__init__.py
+src/VGGClassifier/config/__init__.py
+src/VGGClassifier/config/configuration.py
+src/VGGClassifier/constants/__init__.py
+src/VGGClassifier/entity/__init__.py
+src/VGGClassifier/pipeline/__init__.py
+src/VGGClassifier/utils/__init__.py

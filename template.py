@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 
 # Define project name
 
-project_name = "VGG Classifier"
+project_name = "VGGClassifier"
 
 # Specify list of folders need to be created
 # Constructor files
@@ -26,7 +26,8 @@ list_of_files = [
         "params.yaml",
         "requirements.txt",
         "setup.py",
-        "reserach/trials.ipynb"
+        "reserach/trials.ipynb",
+        "templates/index.html"
 
 
 ]

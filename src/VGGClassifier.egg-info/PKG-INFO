@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: VGGClassifier
+Version: 0.0.0
+Summary: A small python package for CNN app
+Home-page: https://github.com/Syed Ali Zafar/Image-Segmentation-with-AWS
+Author: Syed Ali Zafar
+Author-email: syedalizafar0@gmail.com
+Project-URL: Bug Tracker, https://github.com/Syed Ali Zafar/Image-Segmentation-with-AWS/issues
+License-File: LICENSE
+
+# Image-Segmentation-with-AWS
+Defect detection and segmention using VGG 16 with AWS  deployment
