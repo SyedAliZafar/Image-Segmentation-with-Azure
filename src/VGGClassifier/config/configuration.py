@@ -2,8 +2,8 @@
 from VGGClassifier.constants import *
 from VGGClassifier.constants import CONFIG_FILE_PATH,PARAMS_FILE_PATH
 from VGGClassifier.utils.common import *
-from VGGClassifier.entity.config_entity import (DataIngestionConfig , PrepareBaseModelConfig)
-
+from VGGClassifier.entity.config_entity import (DataIngestionConfig , PrepareBaseModelConfig, PrepareCallbacksConfig)
+import os
 
 class ConfigurationManager:
     def __init__(self,config_file_path=CONFIG_FILE_PATH,params_filepath= PARAMS_FILE_PATH):
@@ -50,3 +50,21 @@ class ConfigurationManager:
 
 
   
+    def get_prepare_callback_config(self) -> PrepareCallbacksConfig:
+
+        config= self.config.prepare_callbacks
+        model_ckpt_dir= os.path.dirname(config.checkpoint_dir)
+
+        create_directories([
+            Path(model_ckpt_dir),
+            Path(config.tensorboard_dir)
+            ])
+        
+
+        prepare_callback_config= PrepareCallbacksConfig(
+            root_dir= Path(config.root_dir),
+            tensorboard_dir= Path(config.tensorboard_dir),
+            checkpoint_dir= Path(config.checkpoint_dir)
+        )
+
+        return prepare_callback_config
