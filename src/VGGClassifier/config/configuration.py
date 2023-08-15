@@ -2,8 +2,9 @@
 from VGGClassifier.constants import *
 from VGGClassifier.constants import CONFIG_FILE_PATH,PARAMS_FILE_PATH
 from VGGClassifier.utils.common import *
-from VGGClassifier.entity.config_entity import (DataIngestionConfig , PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig)
+from VGGClassifier.entity.config_entity import (DataIngestionConfig , PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig, EvaluationConfig)
 import os
+from pathlib import Path
 
 class ConfigurationManager:
     def __init__(self,config_file_path=CONFIG_FILE_PATH,params_filepath= PARAMS_FILE_PATH):
@@ -111,3 +112,16 @@ class ConfigurationManager:
         )
 
         return training_config
+    
+
+    def get_validation_config(self) -> EvaluationConfig:
+
+        evaluation_config = EvaluationConfig(
+            path_of_model= Path("artifacts/training/model.h5"),
+            training_data=Path("artifacts/data_ingestion/Chicken-fecal-images"),
+            all_params= self.params,
+            params_image_size= self.params.IMAGE_SIZE,
+            params_batch_size= self.params.BATCH_SIZE
+        )
+
+        return evaluation_config
