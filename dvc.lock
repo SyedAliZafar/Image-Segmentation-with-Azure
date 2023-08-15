@@ -1,0 +1,117 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/VGGClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: e47ce4f9d20924ca754bb747205349b0
+      size: 817
+    - path: src/VGGClassifier/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 401338d01003e76958e0faa5236a6fb5
+      size: 1102
+    outs:
+    - path: artifacts/data_ingestion/Chicken-fecal-images
+      hash: md5
+      md5: 9e1f8dd2eae3c29e9d635df89d438ae4.dir
+      size: 12207807
+      nfiles: 390
+  prepare_base_model:
+    cmd: python src/VGGClassifier/pipeline/stage_02_prepare_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: e47ce4f9d20924ca754bb747205349b0
+      size: 817
+    - path: src/VGGClassifier/pipeline/stage_02_prepare_base_model.py
+      hash: md5
+      md5: b90d1b8a01cc7dcc6f2216206ec4aa48
+      size: 1023
+    params:
+      params.yaml:
+        CLASSES: 2
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+        INCLUDE_TOP: false
+        LEARNING_RATE: 0.01
+        WEIGHTS: imagenet
+    outs:
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: 7eae7aba11a000391d1b8a354fa51c66.dir
+      size: 160559056
+      nfiles: 2
+  training:
+    cmd: python src/VGGClassifier/pipeline/stage_03_training.py
+    deps:
+    - path: artifacts/data_ingestion/Chicken-fecal-images
+      hash: md5
+      md5: 9e1f8dd2eae3c29e9d635df89d438ae4.dir
+      size: 12207807
+      nfiles: 390
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: 7eae7aba11a000391d1b8a354fa51c66.dir
+      size: 160559056
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: e47ce4f9d20924ca754bb747205349b0
+      size: 817
+    - path: src/VGGClassifier/components/prepare_callbacks.py
+      hash: md5
+      md5: 3c7bda5f882781ac012042bf78986346
+      size: 1066
+    - path: src/VGGClassifier/pipeline/stage_03_training.py
+      hash: md5
+      md5: 1944bc43bffc89f88e94c2aeb3c8d3cb
+      size: 1282
+    params:
+      params.yaml:
+        AUGMENTATION: true
+        BATCH_SIZE: 16
+        EPOCHS: 1
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: 0cdfce6a7e16713b978cb9632583c0c4
+      size: 80591592
+  evaluation:
+    cmd: python src/VGGClassifier/pipeline/stage_04_evaluation.py
+    deps:
+    - path: artifacts/data_ingestion/Chicken-fecal-images
+      hash: md5
+      md5: 9e1f8dd2eae3c29e9d635df89d438ae4.dir
+      size: 12207807
+      nfiles: 390
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: 0cdfce6a7e16713b978cb9632583c0c4
+      size: 80591592
+    - path: config/config.yaml
+      hash: md5
+      md5: e47ce4f9d20924ca754bb747205349b0
+      size: 817
+    - path: src/VGGClassifier/pipeline/stage_04_evaluation.py
+      hash: md5
+      md5: 7bb60251621ed046cb7abd3cf3f2cc55
+      size: 776
+    params:
+      params.yaml:
+        BATCH_SIZE: 16
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: 239c9c3cd59482b97c23aa8a1a9d5bdc
+      size: 57

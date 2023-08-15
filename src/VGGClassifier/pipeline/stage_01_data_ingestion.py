@@ -21,7 +21,7 @@ class DataIngestionTrainingPipeline():
         data_ingestion.download_file()
         data_ingestion.extract_zip_file()
 
-
+STAGE_NAME=" Data Ingestion"
 if __name__ == "__main__":
 
     try:
