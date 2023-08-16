@@ -89,7 +89,7 @@ docker build -t azuredeployment.azurecr.io/azuretesting:latest .
 docker login azuredeployment.azurecr.io
 docker push azuredeployment.azurecr.io/azuretesting:latest
 
-Note: Region should be Europe, US region might not be able to deploy properly
+# Note: Region should be Europe, US region might not be able to deploy properly
 ########### Step 4
 * Search for webapp for container
 
