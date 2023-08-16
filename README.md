@@ -74,7 +74,7 @@ open up you local host and port
 ##### Step 2
 ## Save pass:
 
-dUJzKfm9SqHhQy4G8KMxUUUFFqQ9aTeo6DDw18clM/+ACRDrKqPn
+WTrm37Ucd3PEsn1sO8lgPwiEsbbS3oskq67yRmzfDG+ACRCyDb/v
 
 
 
@@ -85,9 +85,9 @@ dUJzKfm9SqHhQy4G8KMxUUUFFqQ9aTeo6DDw18clM/+ACRDrKqPn
 # Replace the login server from your current login server in Azure Registry
 
 
-docker build -t azuredeployment.azurecr.io/azuretesting:latest .
-docker login azuredeployment.azurecr.io
-docker push azuredeployment.azurecr.io/azuretesting:latest
+docker build -t azuredeploymentnew.azurecr.io/azurefinal:latest .
+docker login azuredeploymentnew.azurecr.io
+docker push azuredeploymentnew.azurecr.io/azurefinal:latest
 
 # Note: Region should be Europe, US region might not be able to deploy properly
 ########### Step 4
