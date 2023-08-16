@@ -74,7 +74,7 @@ open up you local host and port
 ##### Step 2
 ## Save pass:
 
-9JcS9oJXxVgVuv+uP0LoOmtrVHv30wB0X/zXjo6YLm+ACRBZOsZS
+dUJzKfm9SqHhQy4G8KMxUUUFFqQ9aTeo6DDw18clM/+ACRDrKqPn
 
 
 
@@ -85,9 +85,9 @@ open up you local host and port
 # Replace the login server from your current login server in Azure Registry
 
 
-docker build -t chickenapp1.azurecr.io/chicken:latest .
-docker login chickenapp1.azurecr.io
-docker push chickenapp1.azurecr.io/chicken:latest
+docker build -t azuredeployment.azurecr.io/azuretesting:latest .
+docker login azuredeployment.azurecr.io
+docker push azuredeployment.azurecr.io/azuretesting:latest
 
 Note: Region should be Europe, US region might not be able to deploy properly
 ########### Step 4
