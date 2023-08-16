@@ -74,7 +74,7 @@ open up you local host and port
 ##### Step 2
 ## Save pass:
 
-S6Ajn1D0TFzqYFkj74M0RL/f0Fx02KAJw2lMSrjdIC+ACRBQyShz
+9JcS9oJXxVgVuv+uP0LoOmtrVHv30wB0X/zXjo6YLm+ACRBZOsZS
 
 
 
@@ -85,16 +85,11 @@ S6Ajn1D0TFzqYFkj74M0RL/f0Fx02KAJw2lMSrjdIC+ACRBQyShz
 # Replace the login server from your current login server in Azure Registry
 
 
-#docker build -t chickenapp.azurecr.io/chicken:latest .
-docker build -t chickens.azurecr.io/chicken:latest .
+docker build -t chickenapp1.azurecr.io/chicken:latest .
+docker login chickenapp1.azurecr.io
+docker push chickenapp1.azurecr.io/chicken:latest
 
-#docker login chickenapp.azurecr.io
-docker login chickens.azurecr.io
-
-#docker push chickenapp.azurecr.io/chicken:latest
-docker push chickens.azurecr.io/chicken:latest
-
-
+Note: Region should be Europe, US region might not be able to deploy properly
 ########### Step 4
 * Search for webapp for container
 
